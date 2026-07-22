@@ -175,5 +175,25 @@ router.put(
     
     
 )
-
+router.delete(
+    "/notes/:id",
+    authMiddleware,
+    async (req, res) => {
+        const { id } = req.params;
+        const notes = await readNotes();
+        const noteIndex = notes.findIndex(
+            (note) => note.id === id && note.userId === req.user.id
+        );
+        if (noteIndex === -1) {
+            return res.status(404).json({
+                error: "Note not found."
+            });
+        }
+        notes.splice(noteIndex, 1);
+        await writeNotes(notes);
+        return res.status(200).json({
+            message: "Note deleted successfully."
+        });
+    }
+);
 export default router;
