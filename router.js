@@ -129,4 +129,28 @@ router.get(
 
 )
 
+router.get (
+    "/notes/:id",
+    authMiddleware,
+    async (req, res) => {
+        const { id } = req.params;
+        const notes = await readNotes();
+
+        console.log("Requested ID:", id);
+console.log("Logged in user:", req.user.id);
+console.log("Notes:", notes);
+        const note = notes.find(
+            (note) => note.id === id && note.userId === req.user.id
+        )
+        if (!note) {
+            return res.status(404).json({
+                error: "Note not found."
+            })
+        }
+        return res.status(200).json({
+            note
+        })
+    }
+)
+
 export default router;
