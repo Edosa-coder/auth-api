@@ -114,5 +114,19 @@ router.post(
         })
     }
 )
+router.get(
+    "/notes",
+    authMiddleware,
+    async(req, res) => {
+        const notes = await readNotes();
+        const userNotes = notes.filter(
+            (note) => note.userId === req.user.id
+        );
+        return res.status(200).json({
+            notes: userNotes
+        })
+    }
+
+)
 
 export default router;
