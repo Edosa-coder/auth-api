@@ -1,0 +1,14 @@
+[
+  {
+    "id": "d07e67a0-f6a8-4728-a665-696ee38ed50e",
+    "userId": "5780268d-5fb3-4944-84d0-beff93148716",
+    "title": "Shopping List",
+    "content": "Buy chicken, rice and tomatoes."
+  },
+  {
+    "id": "3234233d-2728-4899-80ba-458dd1432a5b",
+    "userId": "5780268d-5fb3-4944-84d0-beff93148716",
+    "title": "Backend Study",
+    "content": "Today I learned JWT Authentication."
+  }
+]
