@@ -199,4 +199,14 @@ router.delete(
         });
     }
 );
+
+router.post(
+    "/logout",
+    authMiddleware,
+    (req, res) => {
+        return res.status(200).json({
+            message: "Logout Successful."
+        })
+    }
+)
 export default router;
