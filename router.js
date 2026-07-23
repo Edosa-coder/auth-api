@@ -36,7 +36,8 @@ router.post(
         const newUser = {
             id: uuidv4(),
             username,
-            password: hashedPassword
+            password: hashedPassword,
+            createdAt: new Date().toISOString()
         };
 
         users.push(newUser);
@@ -104,7 +105,8 @@ router.post(
             id: uuidv4(),
             userId: req.user.id,
             title,
-            content
+            content,
+            createdAt: new Date().toISOString()
         };
         notes.push(newNote);
         await writeNotes(notes);
@@ -166,6 +168,7 @@ router.put(
         }
         notes[noteIndex].title = title;
         notes[noteIndex].content = content;
+        notes[noteIndex].updatedAt = new Date().toISOString();
         await writeNotes(notes);
         return res.status(200).json({
             message: "Note updated successfully.",
