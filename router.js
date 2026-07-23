@@ -96,9 +96,9 @@ router.get(
 router.post(
     "/notes",
     authMiddleware,
-    validateBody(["title", "content"]),
+    validateBody(["title", "content", "tag"]),
     async (req, res) => {
-        const { title, content } = req.body;
+        const { title, content, tag } = req.body;
         const notes = await readNotes();
 
         const newNote = {
@@ -106,6 +106,7 @@ router.post(
             userId: req.user.id,
             title,
             content,
+            tag,
             createdAt: new Date().toISOString()
         };
         notes.push(newNote);
@@ -153,10 +154,10 @@ router.get (
 router.put(
     "/notes/:id",
     authMiddleware,
-    validateBody(["title", "content"]),
+    validateBody(["title", "content", "tag"]),
     async (req, res) => {
         const { id } = req.params;
-        const { title, content } = req.body;
+        const { title, content, tag } = req.body;
         const notes = await readNotes();
         const noteIndex = notes.findIndex(
             (note) => note.id === id && note.userId === req.user.id
@@ -168,6 +169,7 @@ router.put(
         }
         notes[noteIndex].title = title;
         notes[noteIndex].content = content;
+        notes[noteIndex].tag = tag;
         notes[noteIndex].updatedAt = new Date().toISOString();
         await writeNotes(notes);
         return res.status(200).json({

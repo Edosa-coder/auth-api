@@ -3,5 +3,11 @@
     "id": "5780268d-5fb3-4944-84d0-beff93148716",
     "username": "Samuel",
     "password": "$2b$10$dQHZewdu3LNohgJxckD.uugP.o6wNnSFzgSuEbiO/oHJo6so4QCT2"
+  },
+  {
+    "id": "bee7c8f9-ad64-41f0-9890-5e8553de410a",
+    "username": "alice",
+    "password": "$2b$10$J9.Vzi8BmxZ0CUNjTSr8auu/97U4/hx.BVEEoHHTSUbTJdHvNQzTO",
+    "createdAt": "2026-07-23T10:39:28.064Z"
   }
 ]
